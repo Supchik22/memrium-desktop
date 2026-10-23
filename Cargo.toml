@@ -1,0 +1,20 @@
+# The whole desktop as one Cargo workspace: one dependency graph, one build. Every member also builds on its own from its
+# own repository (its Chebrium / Memrium dependencies then come from GitHub); the patches below point them at this checkout.
+[workspace]
+resolver = "2"
+members = [
+    "chebrium", "memrium", "memrium-secrets",
+    "memrium-calc", "memrium-files", "memrium-view", "memrium-player", "memrium-term", "memrium-paint",
+    "memrium-snake", "memrium-monitor", "memrium-archive", "memrium-icons", "memrium-convert",
+]
+default-members = [
+    "memrium", "memrium-secrets",
+    "memrium-calc", "memrium-files", "memrium-view", "memrium-player", "memrium-term", "memrium-paint",
+    "memrium-snake", "memrium-monitor", "memrium-archive", "memrium-icons", "memrium-convert",
+]
+
+[patch."https://github.com/Supchik22/chebrium"]
+chebrium = { path = "chebrium" }
+
+[patch."https://github.com/Supchik22/memrium"]
+memrium-de = { path = "memrium" }

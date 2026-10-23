@@ -1,0 +1,45 @@
+[submodule "chebrium"]
+	path = chebrium
+	url = https://github.com/Supchik22/chebrium
+[submodule "memrium"]
+	path = memrium
+	url = https://github.com/Supchik22/memrium
+[submodule "memrium-secrets"]
+	path = memrium-secrets
+	url = https://github.com/Supchik22/memrium-secrets
+[submodule "memrium-calc"]
+	path = memrium-calc
+	url = https://github.com/Supchik22/memrium-calc
+[submodule "memrium-files"]
+	path = memrium-files
+	url = https://github.com/Supchik22/memrium-files
+[submodule "memrium-view"]
+	path = memrium-view
+	url = https://github.com/Supchik22/memrium-view
+[submodule "memrium-player"]
+	path = memrium-player
+	url = https://github.com/Supchik22/memrium-player
+[submodule "memrium-term"]
+	path = memrium-term
+	url = https://github.com/Supchik22/memrium-term
+[submodule "memrium-paint"]
+	path = memrium-paint
+	url = https://github.com/Supchik22/memrium-paint
+[submodule "memrium-snake"]
+	path = memrium-snake
+	url = https://github.com/Supchik22/memrium-snake
+[submodule "memrium-monitor"]
+	path = memrium-monitor
+	url = https://github.com/Supchik22/memrium-monitor
+[submodule "memrium-archive"]
+	path = memrium-archive
+	url = https://github.com/Supchik22/memrium-archive
+[submodule "memrium-icons"]
+	path = memrium-icons
+	url = https://github.com/Supchik22/memrium-icons
+[submodule "memrium-convert"]
+	path = memrium-convert
+	url = https://github.com/Supchik22/memrium-convert
+[submodule "chebrium-qtstyle"]
+	path = chebrium-qtstyle
+	url = https://github.com/Supchik22/chebrium-qtstyle
