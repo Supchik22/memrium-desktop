@@ -20,5 +20,12 @@ let cfg = config.programs.memrium; in
     hardware.graphics.enable = true;
     services.dbus.enable = true;
     xdg.portal.enable = true;
+    # file dialogs are Memrium Files; the rest of the portals stay with the GTK backend
+    xdg.portal.extraPortals = [ cfg.package pkgs.xdg-desktop-portal-gtk ];
+    xdg.portal.config.Memrium = {
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "memrium" ];
+    };
+    services.dbus.packages = [ cfg.package ];
   };
 }

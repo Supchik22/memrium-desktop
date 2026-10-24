@@ -34,6 +34,12 @@ rustPlatform.buildRustPackage {
     DesktopNames=Memrium
     DESKTOP
 
+    # the file dialog backend: xdg-desktop-portal finds it by its .portal file, the bus starts it on demand
+    install -Dm644 memrium/session/portal/memrium.portal $out/share/xdg-desktop-portal/portals/memrium.portal
+    mkdir -p $out/share/dbus-1/services
+    sed "s|@BIN@|$out/bin|" memrium/session/portal/org.freedesktop.impl.portal.desktop.memrium.service.in \
+      > $out/share/dbus-1/services/org.freedesktop.impl.portal.desktop.memrium.service
+
     for f in $out/bin/memrium_*; do
       wrapProgram "$f" \
         --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath libs} \
