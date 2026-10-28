@@ -3,7 +3,7 @@
 { lib, rustPlatform, pkg-config, makeWrapper
 , wayland, libxkbcommon, libinput, libGL, mesa, libdrm, libgbm, udev, systemd, seatd, pixman, fontconfig, freetype
 , xorg, vulkan-loader, mpv-unwrapped, xkeyboard_config
-, xwayland, wl-clipboard, ffmpeg, curl, glib, xdg-utils, wireplumber, networkmanager, bluez, dbus
+, xwayland, wl-clipboard, ffmpeg, curl, glib, xdg-utils, wireplumber, networkmanager, bluez, dbus, pipewire
 }:
 let
   libs = [ wayland libxkbcommon libinput libGL mesa vulkan-loader mpv-unwrapped xorg.libX11 xorg.libXcursor xorg.libXi xorg.libXrandr ];
@@ -16,8 +16,9 @@ rustPlatform.buildRustPackage {
   src = lib.cleanSource ../.;
   cargoLock.lockFile = ../Cargo.lock;
 
-  nativeBuildInputs = [ pkg-config makeWrapper ];
-  buildInputs = [ wayland libxkbcommon libinput libGL mesa libdrm libgbm udev systemd seatd pixman fontconfig freetype xorg.libX11 xorg.libXcursor xorg.libXi xorg.libXrandr vulkan-loader ];
+  # the screen-sharing portal links libpipewire through bindgen
+  nativeBuildInputs = [ pkg-config makeWrapper rustPlatform.bindgenHook ];
+  buildInputs = [ wayland libxkbcommon libinput libGL mesa libdrm libgbm udev systemd seatd pixman fontconfig freetype xorg.libX11 xorg.libXcursor xorg.libXi xorg.libXrandr vulkan-loader pipewire ];
 
   # the tests open GPU devices and the session bus
   doCheck = false;
