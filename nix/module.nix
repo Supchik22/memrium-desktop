@@ -13,12 +13,22 @@ let cfg = config.programs.memrium; in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [ cfg.package pkgs.wl-clipboard ];
     services.displayManager.sessionPackages = [ cfg.package ];
     # a seat to take (logind), the GPU stack and the portals programs ask for
     security.polkit.enable = true;
     hardware.graphics.enable = true;
     services.dbus.enable = true;
     xdg.portal.enable = true;
+    # file dialogs are Memrium Files; the rest of the portals stay with the GTK backend
+    xdg.portal.extraPortals = [ cfg.package pkgs.xdg-desktop-portal-gtk ];
+    xdg.portal.config.Memrium = {
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "memrium" ];
+      "org.freedesktop.impl.portal.ScreenCast" = [ "memrium" ];
+    };
+    services.dbus.packages = [ cfg.package ];
+    # folders open in Memrium Files
+    xdg.mime.defaultApplications."inode/directory" = "memrium-files.desktop";
   };
 }
