@@ -3,11 +3,12 @@
 { lib, rustPlatform, pkg-config, makeWrapper
 , wayland, libxkbcommon, libinput, libGL, mesa, libdrm, libgbm, udev, systemd, seatd, pixman, fontconfig, freetype
 , xorg, vulkan-loader, mpv-unwrapped, xkeyboard_config, onnxruntime
-, xwayland, wl-clipboard, ffmpeg, curl, glib, xdg-utils, wireplumber, networkmanager, bluez, dbus, pipewire
+, xwayland, wl-clipboard, ffmpeg, curl, glib, xdg-utils, wireplumber, networkmanager, bluez, dbus, pipewire, whisper-cpp
 }:
 let
   libs = [ wayland libxkbcommon libinput libGL mesa vulkan-loader mpv-unwrapped xorg.libX11 xorg.libXcursor xorg.libXi xorg.libXrandr ];
-  tools = [ xwayland wl-clipboard ffmpeg curl glib xdg-utils wireplumber networkmanager bluez dbus fontconfig ];
+  # (pipewire for pw-record and whisper-cpp for whisper-cli: dictation, Super+H)
+  tools = [ xwayland wl-clipboard ffmpeg curl glib xdg-utils wireplumber networkmanager bluez dbus fontconfig pipewire whisper-cpp ];
 in
 rustPlatform.buildRustPackage {
   pname = "memrium-de";
