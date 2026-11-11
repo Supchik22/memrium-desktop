@@ -2191,6 +2191,7 @@ version = "0.1.0"
 dependencies = [
  "chebrium",
  "image",
+ "libc",
  "memrium-de",
  "serde_json",
 ]
@@ -2260,6 +2261,7 @@ version = "0.1.0"
 dependencies = [
  "alacritty_terminal",
  "chebrium",
+ "image",
  "libc",
  "smithay-client-toolkit",
 ]
