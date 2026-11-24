@@ -18,3 +18,9 @@ chebrium = { path = "chebrium" }
 
 [patch."https://github.com/Supchik22/memrium"]
 memrium-de = { path = "memrium" }
+
+# memrium's copies of the CPU rasteriser of its PDF thumbnails (only their `rust-version` differs: 1.91)
+[patch.crates-io]
+vello_api = { path = "memrium/vendor/vello_api" }
+vello_common = { path = "memrium/vendor/vello_common" }
+vello_cpu = { path = "memrium/vendor/vello_cpu" }
